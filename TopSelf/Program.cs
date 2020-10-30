@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using Topshelf;
-//安装服务 F:\Test\QuartzConsole\TopSelf\bin\Debug\TopSelf.exe install
-//卸载服务 F:\Test\QuartzConsole\TopSelf\bin\Debug\TopSelf.exe uninstall
-//启动服务 F:\Test\QuartzConsole\TopSelf\bin\Debug\TopSelf.exe start
+// cmd运行
+//安装服务 E:\TopSelfDemo\TopSelf\bin\Debug\TopSelf.exe install
+//卸载服务 E:\TopSelfDemo\TopSelf\bin\Debug\TopSelf.exe uninstall
+//启动服务 E:\TopSelfDemo\TopSelf\bin\Debug\TopSelf.exe start
 namespace TopSelf
 {
     public class Kiba1: ServiceControl
@@ -93,15 +94,15 @@ namespace TopSelf
             {
                 x.Service<KibaCustom>(s =>
                 {
-                    s.ConstructUsing(name => new KibaCustom()); //使用Kiba1类进行构建服务
+                    s.ConstructUsing(name => new KibaCustom()); //使用KibaCustom类进行构建服务
                     s.WhenStarted(tc => tc.Start());       //使用Kiba1的Start作为启动函数
                     s.WhenStopped(tc => tc.Stop());        //使用Kiba1的Stop作为停止函数
                 });
                 x.RunAsLocalSystem();      //服务使用NETWORK_SERVICE内置帐户运行。身份标识，有好几种方式，如：x.RunAs("username", "password");  x.RunAsPrompt(); x.RunAsNetworkService(); 等                      
 
-                x.SetDescription("服务描述");
-                x.SetDisplayName("服务显示名");
-                x.SetServiceName("服务名");
+                x.SetDescription("服务描述custom");
+                x.SetDisplayName("服务显示名custom");
+                x.SetServiceName("服务名custom");
             });
         }
 
